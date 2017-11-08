@@ -1,0 +1,13 @@
+// Helpers
+mixin anchor(technology)
+  div
+    a(href='example-' + technology + '.html')= 'Ejemplo con ' + technology
+
+// Actually the document
+doctype html
+html
+  head
+    meta(charset='utf-8')
+  body
+    each val in ['less', 'sass']
+      +anchor(val)
