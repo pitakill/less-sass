@@ -1,7 +1,38 @@
+mixin links(name)
+  li
+    a(href='#') Opción #{name}
+
 doctype html
 html
   head
     meta(charset='utf-8')
     link(rel='stylesheet' href='sass/styles.css')
   body
-    div adiós
+    .row.header
+      .col-1-2
+        .logo
+          img(src='../assets/logo.svg' alt='Logo')
+      .col-1-2
+        .login
+          a(href='#') Inicio
+    .row
+      .col-1-4
+        .menu
+          ul
+            each val in ['uno', 'dos', 'tres', 'cuatro']
+              +links(val)
+      .col-1-2
+        .graphic Gráfica 1
+      .col-1-2
+        .graphic Gráfica 2
+    .row
+      .col-1-2
+        .graphic Gráfica 3
+      .col-1-2
+        .graphic Gráfica 4
+    .row.footer
+      .col-1-2
+        .logo
+          img(src='../assets/logo.svg' alt='Logo')
+      .col-1-2
+        .login Intranet | Instructivo | Glosario

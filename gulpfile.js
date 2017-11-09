@@ -1,4 +1,5 @@
 var browserSync = require('browser-sync').create();
+var copy = require('gulp-copy');
 var gulp = require('gulp');
 var less = require('gulp-less');
 var pug = require('gulp-pug');
@@ -34,12 +35,22 @@ gulp.task('serve', function() {
     port: 8080
   });
 
+  gulp.watch('src/assets/**/*', ['copy']);
   gulp.watch('src/*.pug', ['html']);
   gulp.watch('src/**/*.s*ss', ['sass']);
   gulp.watch('src/**/*.less', ['less']);
 });
 
+gulp.task('copy', function() {
+  return gulp
+    .src('src/assets/**/*')
+    .pipe(copy('dist/assets/', { prefix: 2 }))
+    .pipe(gulp.dest('dist/assets'))
+    .pipe(browserSync.stream())
+});
+
 gulp.task('default', [
+  'copy',
   'html',
   'less',
   'sass',
