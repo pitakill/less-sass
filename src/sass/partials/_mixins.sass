@@ -1,0 +1,38 @@
+@mixin xrays($type: 'this', $color: $color-red)
+  $values: 1px solid $color
+  @if $type == this
+    &
+      outline: $values
+  @else if $type == children
+    & > *
+      outline: $values
+  @else if $type == content
+    & *
+      outline: $values
+  @else if $type == all
+    &, & *
+      outline: $values
+
+@mixin row()
+  display: flex
+
+@mixin col($col, $sum, $gap: 1em)
+  box-sizing: border-box
+  padding:
+    left: $gap
+    right: $gap
+  margin: auto
+  width: percentage($col/$sum)
+
+@mixin create-columns($columns)
+  @for $i from 1 through $columns
+    .col-1-#{$i}
+      @include col(1, $i)
+      &:first-of-type
+        padding-left: 0
+      &:last-of-type
+        padding-right: 0
+
+@mixin create-row()
+  .row
+    @include row()

@@ -1,6 +1,6 @@
-mixin links(name)
+mixin links(index, name)
   li
-    a(href='#') Opción #{name}
+    a(href=`http://${name}.com` target='_blank') Opción #{index}
 
 doctype html
 html
@@ -19,8 +19,8 @@ html
       .col-1-4
         .menu
           ul
-            each val in ['uno', 'dos', 'tres', 'cuatro']
-              +links(val)
+            each val,index in {'uno': 'google', 'dos': 'yahoo', 'tres': 'duckduckgo', 'cuatro': 'bing'}
+              +links(index, val)
       .col-1-2
         .graphic Gráfica 1
       .col-1-2
