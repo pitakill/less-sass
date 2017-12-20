@@ -1,67 +1,11 @@
-// Vars
-$color-red: rgb(255, 0, 0) // #f00
-
-$columns: 12
-
-// Mixins
-@mixin xrays($type: 'this', $color: $color-red)
-  $values: 1px solid $color
-  @if $type == this
-    &
-      outline: $values
-  @else if $type == children
-    & > *
-      outline: $values
-  @else if $type == content
-    & *
-      outline: $values
-  @else if $type == all
-    &, & *
-      outline: $values
-
-@mixin row()
-  display: flex
-
-@mixin col($col, $sum, $gap: 1em)
-  box-sizing: border-box
-  padding:
-    left: $gap
-    right: $gap
-  margin: auto
-  width: percentage($col/$sum)
-
-@mixin create-columns($columns)
-  @for $i from 1 through $columns
-    .col-1-#{$i}
-      @include col(1, $i)
-      &:first-of-type
-        padding-left: 0
-      &:last-of-type
-        padding-right: 0
-
-@mixin create-row()
-  .row
-    @include row()
-
-// Actually the Styles
-
-// Only for develop
-//@include xrays(all)
+@import './partials/mixins'
+@import './partials/vars'
 
 @include create-columns($columns)
 @include create-row()
 
-body
-  margin: 0
-  padding: 0
+// Only for develop
+//@include xrays(all)
 
-.header,
-.footer
-  .login
-    float: right
-    margin-right: 10%
-
-.footer
-  .logo
-    img
-      width: 80px
+// Actually the styles
+@import './index'

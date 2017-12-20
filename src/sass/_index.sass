@@ -1,0 +1,28 @@
+body
+  font-family: $sans-serif-font
+  margin: 0
+  padding: 0
+
+.header,
+.footer
+  .login
+    float: right
+    margin-right: 10%
+
+.footer
+  .logo
+    img
+      width: 80px
+
+a
+  color: darken($color-silver, 50%)
+  display: block
+  padding: 4px 8px
+  text-decoration: none
+  transition: $transition-time ease all
+  &:hover
+    background-color: rgba($color-silver, .1);
+    color: darken($color-silver, 100%)
+
+@import 'partials/graphics'
+@import 'partials/menu'

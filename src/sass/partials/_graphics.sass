@@ -1,0 +1,32 @@
+$color-graph-alternative: complement($color-silver)
+$color-graph-main: invert($color-graph-alternative)
+
+$color-chart2-main: cyan
+
+$color-chart3-main: red
+
+.data-points
+  &-0
+    circle,
+    rect
+      fill: $color-graph-main !important
+
+      @include color-chart(2, fill, $color-chart2-main)
+      @include color-chart(3, fill, $color-chart3-main)
+
+  &-1
+    circle,
+    rect
+      fill: $color-graph-alternative !important
+
+.path-group
+  &-0
+    .line-graph-path
+      stroke: $color-graph-main !important
+
+      @include color-chart(2, stroke, $color-chart2-main)
+      @include color-chart(3, stroke, $color-chart3-main)
+
+  &-1
+    .line-graph-path
+      stroke: $color-graph-alternative !important

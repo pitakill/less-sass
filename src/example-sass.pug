@@ -1,12 +1,13 @@
-mixin links(name)
+mixin links(index, name)
   li
-    a(href='#') Opción #{name}
+    a(href=`https://www.${name}.com` target='_blank') Opción #{index}
 
 doctype html
 html
   head
     meta(charset='utf-8')
     link(rel='stylesheet' href='sass/styles.css')
+    script(src='https://unpkg.com/frappe-charts@0.0.8/dist/frappe-charts.min.iife.js')
   body
     .row.header
       .col-1-2
@@ -19,20 +20,21 @@ html
       .col-1-4
         .menu
           ul
-            each val in ['uno', 'dos', 'tres', 'cuatro']
-              +links(val)
+            each val,index in {'uno': 'google', 'dos': 'yahoo', 'tres': 'duckduckgo', 'cuatro': 'bing'}
+              +links(index, val)
       .col-1-2
-        .graphic Gráfica 1
+        .graphic#chart1 Gráfica 1
       .col-1-2
-        .graphic Gráfica 2
+        .graphic#chart2 Gráfica 2
     .row
       .col-1-2
-        .graphic Gráfica 3
+        .graphic#chart3 Gráfica 3
       .col-1-2
-        .graphic Gráfica 4
+        .graphic#chart4 Gráfica 4
     .row.footer
       .col-1-2
         .logo
           img(src='../assets/logo.svg' alt='Logo')
       .col-1-2
         .login Intranet | Instructivo | Glosario
+    script(src='js/main.js')
