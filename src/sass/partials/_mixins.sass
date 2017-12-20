@@ -36,3 +36,7 @@
 @mixin create-row()
   .row
     @include row()
+
+@mixin color-chart($number, $property, $color)
+  #chart#{$number} &
+    #{$property}: $color !important
